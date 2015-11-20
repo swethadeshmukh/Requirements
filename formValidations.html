@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Form Validation</title>
+  	<script src="angular.min.js"></script>
+</head>
+<body><center>Please Enter Details<br><br>
+	<form name="formValid" novalidate>
+		First Name <input type="text" name="firstName" placeholder="Enter First Name" required>
+		<span ng-show="formValid.firstName.$dirty && formValid.firstName.$invalid">
+			<span ng-show="formValid.firstName.$error.required">Please enter your firstname</span>
+		</span><br><br>
+		Middle Name <input type="text" name="middletName"><br><br>
+		Last Name <input type="text" name="lastname" required><br><br>
+		Email <input type="email" name="mail" required><br><br>
+		Contact Number <input type="number" name="contact" required><br><br>
+		<input type="button" name="submitB" value="SUBMIT" >
+
+	</form></center>
+</body>
+</html>

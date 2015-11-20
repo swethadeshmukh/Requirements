@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>Disable right click
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+
+<script>
+	var myApp = angular.module('myApp', []);
+
+myApp.directive('rightClick', function($parse) {
+    return function(scope, element, attr) {
+        element.bind('contextmenu', function(event) {
+            event.preventDefault();
+            var fn = $parse(attr['rightClick']);
+            scope.$apply(function() {
+                fn(scope, {
+                    $event: event
+                });
+            });
+            return false;
+        });
+    }
+});
+
+
+function MyCtrl($scope) {
+    $scope.name = 'Superhero';
+}
+</script>
+</head>
+
+<body>
+	<div ng-app="myApp">
+  <a ng-click="name='Left'" right-click="name='Right'">Change Name</a>
+  <p>Hello, {{name}}!</p>
+</div>
+</body>
+</html>
